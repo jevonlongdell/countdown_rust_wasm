@@ -15,7 +15,7 @@
         fn default() -> Self {
             Self {
                 // Example stuff:
-                label: "asdfjkle".to_owned(),
+                label: "beautiful".to_owned(),
                 //            value: 2.7,
             }
         }
@@ -79,9 +79,6 @@
                 egui::widgets::global_theme_preference_buttons(ui);
             });
 
-            // egui::TopBottomPanel ::bottom("my footer")ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
-            // });
-            
             
              let solns = solver::find_words(&self.label);
             

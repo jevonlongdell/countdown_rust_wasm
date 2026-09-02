@@ -1,3 +1,5 @@
+use crate::solver;
+
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
 #[serde(default)] // if we add new fields, give them default values when deserializing old state
@@ -76,11 +78,16 @@ impl eframe::App for TemplateApp {
 
 
             ui.separator();
+
+        let solns = solver::find_words(&self.label);
+
 	    for k in (3..=9).rev() {
-		ui.heading(format!("{k} letter words:"));
-		ui.label("pumpkin, turnip, sweede");
-		ui.label("");
-	    }
+		    ui.heading(format!("{k} letter words:"));
+            if solns.contains_key(&k) {
+                ui.label(solns[&k].join(", "));
+            }
+        }
+		    
 	    
          
 
